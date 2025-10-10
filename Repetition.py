@@ -301,6 +301,50 @@ def sum_range (start, end):
 print(sum_range(start, end))
 
 
+#6. Sets and Dictionaries (Mappings)
+#Goal: Understand how to use sets and key-value pairs.
 
 
+#34. Create a set with the numbers {1, 2, 3, 3, 2, 1}. Print it — what happens to duplicates?
+numbers = {1,2,3,3,2,1}
+print(numbers)
+
+#Answer: they dissapear...set only keeps one copy of each unique number.
+
+#35 Create two sets and print their union, intersection, and difference.
+set1 = {1, 2, 3, 4}
+set2 = {3, 4, 5, 6}
+
+union_set = set1.union(set2)
+intersection_set = set1.intersection(set2)
+difference_set = set1.difference(set2)
+
+print("Union:", union_set, "\nIntersection:", intersection_set, "\nDifference (set1 - set2):", difference_set)
+
+#36 Check whether the number 5 is in {2, 4, 6, 8}.
+my_set = {2, 4, 6, 8}
+print(5 in my_set)
+
+#37 1. Create a dictionary student = {"name": "Alice", "age": 20, "grade": "A"}. Print the student’s name.
+student = {"name": "Alice", "age": 20, "grade": "A"}
+# Print the student's name
+print(student["name"])
+
+#38 Add a new key "passed": True to that dictionary.
+student = {"name": "Alice", "age": 20, "grade": "A"}
+student["passed"] = True            # Add a new key-value pair
+print(student)          # Print the updated dictionary
+
+#39  Loop through the dictionary and print each key and value.
+student = {"name": "Alice", "age": 20, "grade": "A", "passed": True}
+
+for key, value in student.items():      # Loop through dictionary
+    print(key, ":", value)
+
+#40 Write a function that takes a dictionary of items and prices, and returns the total cost.
+def total_cost(items):
+    total = 0
+    for price in items.values():
+        total += price
+    return total
 
