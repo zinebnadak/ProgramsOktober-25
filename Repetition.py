@@ -348,3 +348,189 @@ def total_cost(items):
         total += price
     return total
 
+# Example usage:
+shopping_cart = {
+    "apple": 2,
+    "banana": 1.5,
+    "milk": 3
+}
+
+print(total_cost(shopping_cart))  # Output: 6.5
+
+
+#7. Random Module
+#Goal: Practice using built-in modules.
+#41. Import the random module and print a random integer between 1 and 10.
+import random
+
+random_number = random.randint(1,10)
+print (random_number)
+
+#42. Create a list of colors and print a random color from the list.
+import random
+colors = ["red", "blue", "yellow", "black", "pink"]
+
+random_color = random.choice(colors)
+print(random_color)
+
+#43. Simulate rolling two dice and printing their total.
+import random
+dice1 = random.randint(1, 6)
+dice2 = random.randint(1, 6)
+
+total = dice1 + dice2
+
+print("Die 1:", dice1)
+print("Die 2:", dice2)
+print("Total:", total)
+
+#44. Write a small guessing game:
+#* Random number between 1 and 10.
+#* User guesses until correct.
+import random
+random_number = random.randint(1,10)
+
+while True:
+    guess = int(input("Guess the number between 1-10: "))
+    if guess < 1 or guess > 10:
+        print("Please enter a number between 1-10")
+        continue
+    if guess == random_number:      #or use elif here and remove the continue from if-statement
+        print(f"Correct! The number was {random_number}")
+        break
+    else:
+        print("Wrong number! Try again.")
+
+
+#8. Classes and Objects
+#Goal: Understand how to define and use classes.
+
+
+#45. Create a class Car with attributes brand and year., crete an instance of the class and print the attributes
+class Car:
+    def __init__(self, brand, year):
+        self.brand = brand  # Brand of the car
+        self.year = year    # Year of manufacture
+
+# Create an instance of Car
+my_car = Car("Toyota", 2020)
+
+# Access and print the attributes
+print("Car brand:", my_car.brand)
+print("Car year:", my_car.year)
+
+#46. Add a method display_info() that prints brand and year.
+# Define the Car class
+class Car:
+    def __init__(self, brand, year):
+        self.brand = brand  # Brand of the car
+        self.year = year    # Year of manufacture
+
+    # Method to display car information
+    def display_info(self):
+        print(f"Car brand: {self.brand}, Year: {self.year}")
+
+# Create an instance of Car
+my_car = Car("Toyota", 2020)
+
+# Call the display_info() method
+my_car.display_info()
+
+
+
+#47. Create a class Person with name and age. Add a method birthday() that increases age by 1.
+# Define the Person class
+class Person:
+    def __init__(self, name, age):
+        self.name = name  # Name of the person
+        self.age = age    # Age of the person
+
+    # Method to celebrate birthday
+    def birthday(self):
+        self.age += 1
+        print(f"Happy Birthday, {self.name}! You are now {self.age} years old.")
+
+# Create an instance of Person
+person1 = Person("Alice", 25)
+
+# Call the birthday() method
+person1.birthday()
+
+#48. Create a class BankAccount with methods deposit(amount), withdraw(amount), and get_balance().
+# Define the BankAccount class
+class BankAccount:
+    def __init__(self, initial_balance=0):
+        self.balance = initial_balance  # Initialize account balance
+
+    # Method to deposit money
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposited: ${amount}")
+        else:
+            print("Deposit amount must be positive.")
+
+    # Method to withdraw money
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient funds!")
+        elif amount <= 0:
+            print("Withdrawal amount must be positive.")
+        else:
+            self.balance -= amount
+            print(f"Withdrew: ${amount}")
+
+    # Method to check balance
+    def get_balance(self):
+        return self.balance
+
+# Example usage
+account = BankAccount(100)  # Create account with $100
+account.deposit(50)          # Deposit $50
+account.withdraw(30)         # Withdraw $30
+print("Current balance:", account.get_balance())
+
+
+#49. Create a class Rectangle with width and height and a method to calculate area.
+# Define the Rectangle class
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width    # Width of the rectangle
+        self.height = height  # Height of the rectangle
+
+    # Method to calculate area
+    def area(self):
+        return self.width * self.height
+
+# Example usage
+rect = Rectangle(5, 10)
+print("Area of rectangle:", rect.area())
+
+
+#50. Create two Rectangle objects and print which one has a larger area.
+# Define the Rectangle class
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+# Create two rectangle objects
+rect1 = Rectangle(5, 10)
+rect2 = Rectangle(8, 6)
+
+# Calculate their areas
+area1 = rect1.area()
+area2 = rect2.area()
+
+# Compare and print which rectangle has a larger area
+if area1 > area2:
+    print(f"Rectangle 1 has a larger area: {area1}")
+elif area2 > area1:
+    print(f"Rectangle 2 has a larger area: {area2}")
+else:
+    print(f"Both rectangles have the same area: {area1}")
+
+
