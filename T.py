@@ -1,63 +1,64 @@
-# 5 Parking Garage Program - Interactive Version
+import random
 
-# Initialize Garage: 3 floors × 6 spots per floor
-garage = [["" for _ in range(6)] for _ in range(3)]
+# Setup: Initial values
+hero_hp = 10
+monster_hp = 20
 
-# Function: park_car
-def park_car(garage: list[list[str]], floor: int, slot: int, car: str) -> str:
-    max_floor = len(garage)
-    max_slots = len(garage[0]) if max_floor > 0 else 0
+hero_min_attack = 5
+hero_max_attack = 8
 
-    # Check floor validity
-    if floor < 1 or floor > max_floor:
-        return f"Invalid floor, must be between 1 and {max_floor}"
-
-    # Check slot validity
-    if slot < 1 or slot > max_slots:
-        return f"Invalid spot, must be between 1 and {max_slots}"
-
-    # Check if car is already parked
-    for f in garage:
-        if car in f:
-            return f"{car} is already parked"
-
-    # Check if spot is empty
-    if garage[floor - 1][slot - 1] != "":
-        return "The spot is occupied"
-
-    # Park the car
-    garage[floor - 1][slot - 1] = car
-    return f"{car} is now parked"
-
-# Interactive parking loop
-while True:
-    print("\n--- Parking Garage ---")
-    for i, floor in enumerate(garage, start=1):
-        print(f"Floor {i}: {floor}")
-
-    action = input("\nEnter 'park' to park a car or 'quit' to exit: ").lower()
-
-    if action == "quit":
-        print("Exiting program.")
-        break
-    elif action == "park":
-        car = input("Enter car registration number: ")
-        try:
-            floor = int(input("Enter floor (1-3): "))
-            slot = int(input("Enter slot (1-6): "))
-        except ValueError:
-            print("Floor and slot must be numbers.")
-            continue
-
-        message = park_car(garage, floor, slot, car)
-        print(message)
-    else:
-        print("Invalid action. Type 'park' or 'quit'.")
+monster_min_attack = 3
+monster_max_attack = 12
 
 
+# Function to simulate the battle
+def battle():
+    global hero_hp, monster_hp
+
+    print(f"Battle begins! Hero HP = {hero_hp}, Monster HP = {monster_hp}.\n")
+
+    # Repeat the battle until either hero or monster has HP < 1
+    while hero_hp > 0 and monster_hp > 0:
+        # Player's turn to attack
+        print(f"Your turn! Hero HP = {hero_hp}, Monster HP = {monster_hp}")
+        action = input("Do you want to (a)ttack or (d)efend? ").lower()
+
+        if action == "a":
+            # Hero attacks
+            damage = random.randint(hero_min_attack, hero_max_attack)
+            monster_hp -= damage
+            print(f"Hero attacks and deals {damage} damage.")
+        elif action == "d":
+            # Hero defends (Monster's attack damage is halved)
+            print("Hero defends and blocks some damage!")
+            damage = random.randint(monster_min_attack, monster_max_attack) // 2
+            hero_hp -= damage
+            print(f"Monster attacks and deals {damage} damage.")
+        else:
+            print("Invalid choice, you must choose 'a' to attack or 'd' to defend.")
+            continue  # Skip the monster's turn and ask for input again
+
+        print(f"Monster now has {monster_hp} HP.")
+        print(f"Hero now has {hero_hp} HP.\n")
+
+        # Monster's turn to attack if it's still alive
+        if monster_hp > 0:
+            damage = random.randint(monster_min_attack, monster_max_attack)
+            hero_hp -= damage
+            print(f"Monster attacks and deals {damage} damage.")
+            print(f"Hero now has {hero_hp} HP.\n")
+
+        # Check if the battle has ended
+        if hero_hp <= 0:
+            print("Monster wins!")
+            break
+        elif monster_hp <= 0:
+            print("Hero wins!")
+            break
 
 
-
+# Run the battle
+battle()
 
 
 

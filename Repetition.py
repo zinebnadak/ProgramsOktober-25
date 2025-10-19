@@ -533,4 +533,24 @@ elif area2 > area1:
 else:
     print(f"Both rectangles have the same area: {area1}")
 
+#Common Sequence Functions:
+# len(seq)
+# min(seq), max(seq)
+# sum(seq)
+# sorted(seq)
+# in, not in
 
+#String Functions (review only if needed):
+# str.lower(), str.upper(), str.strip(), str.split(), str.join()
+
+#List Functions:
+# list.append(x), list.remove(x), list.pop(), list.sort(), list.reverse()
+
+#Dictionary Functions:
+# dict.keys(), dict.values(), dict.items(), dict.get(key), dict.update({...})
+
+#Random Module:
+# random.randint(a, b)
+# random.choice(seq)
+# random.shuffle(seq)
+# random.random()
